@@ -1,5 +1,7 @@
+const {src, dest} =require('gulp');
+
 const html = cb => {
-   console.log('Proccessing html');
+   src('./src/html/index.html');
 
    cb();
 };
