@@ -10,7 +10,13 @@
 
 <body>
 
+   @@include('chunk/header.html')
+
    <h1>Main Page</h1>
+
+   @@loop('chunk/news-item.html', '../../data/news.json')
+
+   @@include('chunk/footer.html')
 
 </body>
 
