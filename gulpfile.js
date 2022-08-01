@@ -8,6 +8,7 @@ const app = require('./config/app')
 // Tasks
 const clear = require('./tasks/clear.js');
 const html = require('./tasks/html.js');
+const css = require('./tasks/css.js');
 
 const server = () => {
    browserSync.init(app.browserSync);
@@ -15,14 +16,16 @@ const server = () => {
 
 const watcher = () => {
    watch(path.html.watch, html).on('all', browserSync.reload);
+   watch(path.css.watch, css).on('all', browserSync.reload);
 }
 
 exports.html = html;
+exports.css = css;
 exports.watch = watcher;
 exports.clear = clear;
 
 exports.dev = series(
    clear,
-   html,
+   parallel(html, css),
    parallel(watcher, server)
 );
