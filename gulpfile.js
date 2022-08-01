@@ -1,21 +1,9 @@
-const {src, dest, watch, series, parallel} = require('gulp');
+const {watch, series, parallel} = require('gulp');
 const browserSync = require('browser-sync').create();
 
-const fileInclude = require('gulp-file-include');
-const htmlmin = require('gulp-htmlmin');
-const size = require('gulp-size');
-
-const html = () => {
-   return src('./src/html/*.html')
-   .pipe(fileInclude())
-   .pipe(size({title: 'before'}))
-   .pipe(htmlmin({
-      collapseWhitespace: true
-   }))
-   .pipe(size({title: 'after'}))
-   .pipe(dest('./public'))
-   .pipe(browserSync.stream());
-}
+// Tasks
+const clear = require('./tasks/clear.js');
+const html = require('./tasks/html.js');
 
 const server = () => {
    browserSync.init({
@@ -28,13 +16,15 @@ const server = () => {
 }
 
 const watcher = () => {
-   watch('./src/html/**/*.html', html);
+   watch('./src/html/**/*.html', html).on('all', browserSync.reload);
 }
 
 exports.html = html;
 exports.watch = watcher;
+exports.clear = clear;
 
 exports.dev = series(
+   clear,
    html,
    parallel(watcher, server)
 );
