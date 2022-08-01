@@ -11,5 +11,8 @@
     "url": "/Users/oleksandr/Coding/myGulpBuild/.git/"
   },
   "author": "Oleksandr",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
 }
