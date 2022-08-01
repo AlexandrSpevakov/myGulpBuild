@@ -1,9 +1,8 @@
 const {src, dest} =require('gulp');
 
-const html = cb => {
-   src('./src/html/index.html');
-
-   cb();
+const html = () => {
+   return src('./src/html/index.html')
+   .pipe(dest('./public'));
 };
 
 exports.html = html;
