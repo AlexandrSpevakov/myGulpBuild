@@ -10,20 +10,20 @@ const cssImport = require('gulp-cssimport');
 const autoPrefixer = require('gulp-autoprefixer');
 const csso = require('gulp-csso');
 const rename = require('gulp-rename');
-const size = require('gulp-size');
+// const size = require('gulp-size');
 
 // Task
 const css = () => {
-   return src(path.css.src, {sourcemaps: true})
+   return src(path.css.src)
    .pipe(concat('main.css'))
    .pipe(cssImport())
    .pipe(autoPrefixer())
-   .pipe(size({title: 'main.css'}))
-   .pipe(dest(path.css.dest, {sourcemaps: true}))
-   .pipe(rename({suffix: '.min'}))
+   // .pipe(size({title: 'main.css'}))
+   .pipe(dest(path.css.dest))
+   .pipe(rename(app.rename))
    .pipe(csso())
-   .pipe(size({title: 'main.min.css'}))
-   .pipe(dest(path.css.dest, {sourcemaps: true}))
+   // .pipe(size({title: 'main.min.css'}))
+   .pipe(dest(path.css.dest))
 }
 
 module.exports = css;

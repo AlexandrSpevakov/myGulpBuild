@@ -12,5 +12,9 @@ module.exports = {
 
    htmlmin: {
       collapseWhitespace: true
+   },
+
+   rename: {
+      suffix: '.min'
    }
 }
