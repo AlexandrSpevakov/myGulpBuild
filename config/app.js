@@ -16,5 +16,9 @@ module.exports = {
 
    rename: {
       suffix: '.min'
+   },
+
+   webpack: {
+      mode: 'production'
    }
 }
