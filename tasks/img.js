@@ -5,7 +5,6 @@ const path = require('../config/paths')
 const app = require('../config/app')
 
 // Plugins
-// const size = require('gulp-size');
 const imagemin = require('gulp-imagemin');
 const newer = require('gulp-newer');
 
