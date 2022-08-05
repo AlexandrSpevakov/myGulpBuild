@@ -1,3 +1,4 @@
+// Plugin
 const del = require('del');
 
 // Config
