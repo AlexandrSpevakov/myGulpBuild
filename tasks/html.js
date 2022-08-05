@@ -13,9 +13,9 @@ const gulpIf = require('gulp-if');
 // Task
 const html = () => {
    return src(path.html.src)
-   .pipe(fileInclude(app.htmlmin))
+   .pipe(fileInclude())
    // .pipe(size({title: 'before'}))
-   .pipe(gulpIf(app.isProd, htmlmin()))
+   .pipe(gulpIf(app.isProd, htmlmin(app.htmlmin)))
    // .pipe(size({title: 'after'}))
    .pipe(dest(path.html.dest))
 }

@@ -17,7 +17,7 @@ module.exports = {
    },
 
    htmlmin: {
-      collapseWhitespace: isProd
+      collapseWhitespace: true
    },
 
    rename: {

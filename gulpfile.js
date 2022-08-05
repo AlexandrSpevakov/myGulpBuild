@@ -6,13 +6,17 @@ const path = require('./config/paths')
 const app = require('./config/app')
 
 // Imported Tasks
-const server = require('./tasks/server.js');
 const clear = require('./tasks/clear.js');
 const html = require('./tasks/html.js');
 // const css = require('./tasks/css.js');
 const scss = require('./tasks/scss.js');
 const js = require('./tasks/js.js');
 const img = require('./tasks/img.js');
+
+// Server
+const server = () => {
+   browserSync.init(app.browserSync);
+}
 
 // Watching
 const watcher = () => {
