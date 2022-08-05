@@ -1,7 +1,13 @@
+const isProd = process.argv.includes('--production');
+const isDev = !isProd
+
 // Config
 const path = require('./paths.js')
 
 module.exports = {
+   isProd: isProd,
+   isDev: isDev,
+
    browserSync: {
       server: {
          baseDir: path.root
@@ -11,7 +17,7 @@ module.exports = {
    },
 
    htmlmin: {
-      collapseWhitespace: true
+      collapseWhitespace: isProd
    },
 
    rename: {
@@ -19,7 +25,7 @@ module.exports = {
    },
 
    webpack: {
-      mode: 'production'
+      mode: isProd ? 'production' : 'development'
    },
 
    imagemin: {

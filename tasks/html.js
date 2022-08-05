@@ -8,13 +8,14 @@ const app = require('../config/app');
 const fileInclude = require('gulp-file-include');
 const htmlmin = require('gulp-htmlmin');
 // const size = require('gulp-size');
+const gulpIf = require('gulp-if');
 
 // Task
 const html = () => {
    return src(path.html.src)
    .pipe(fileInclude(app.htmlmin))
    // .pipe(size({title: 'before'}))
-   .pipe(htmlmin())
+   .pipe(gulpIf(app.isProd, htmlmin()))
    // .pipe(size({title: 'after'}))
    .pipe(dest(path.html.dest))
 }
