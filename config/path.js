@@ -22,9 +22,15 @@ export default {
       dest: pathDest + '/css'
    },
 
-   js: {
-      src: pathSrc + '/js/*.js',
-      watch: pathSrc + '/js/**/*.js',
+   // js: {
+   //    src: pathSrc + '/js/*.js',
+   //    watch: pathSrc + '/js/**/*.js',
+   //    dest: pathDest + '/js'
+   // },
+
+   ts: {
+      src: pathSrc + '/ts/*.ts',
+      watch: pathSrc + '/ts/*.ts',
       dest: pathDest + '/js'
    },
 

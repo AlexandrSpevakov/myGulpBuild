@@ -42,9 +42,8 @@
       "gulp-sass": "^5.1.0",
       "gulp-size": "^4.0.1",
       "gulp-sourcemaps": "^3.0.0",
+      "gulp-typescript": "^6.0.0-alpha.1",
       "gulp-uglify": "^3.0.2",
-      "sass": "^1.54.0",
-      "webpack": "^5.74.0",
-      "webpack-stream": "^7.0.0"
+      "sass": "^1.54.0"
    }
 }

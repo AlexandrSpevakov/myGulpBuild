@@ -24,10 +24,6 @@ export default {
       suffix: '.min'
    },
 
-   webpack: {
-      mode: isProd ? 'production' : 'development'
-   },
-
    imagemin: {
       verbose: true
    }
