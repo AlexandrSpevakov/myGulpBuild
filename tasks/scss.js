@@ -8,6 +8,8 @@ import app from '../config/app.js';
 import autoPrefixer from 'gulp-autoprefixer';
 import csso from 'gulp-csso';
 import rename from 'gulp-rename';
+import sourcemaps from 'gulp-sourcemaps';
+import gulpIf from 'gulp-if';
 // import size from 'gulp-size';
 import dartSass from 'sass';
 import gulpSass from 'gulp-sass';
@@ -16,12 +18,14 @@ const sass = gulpSass(dartSass);
 // Task
 export default () => {
    return gulp.src(path.scss.src)
+   .pipe(gulpIf(app.isDev, sourcemaps.init()))
    .pipe(sass())
    .pipe(autoPrefixer())
-   // .pipe(size({title: 'main.css'}))
    .pipe(gulp.dest(path.scss.dest))
+   // .pipe(size({title: 'main.css'}))
    .pipe(rename(app.rename))
    .pipe(csso())
    // .pipe(size({title: 'main.min.css'}))
+   .pipe(gulpIf(app.isDev, sourcemaps.write()))
    .pipe(gulp.dest(path.scss.dest))
 }

@@ -10,18 +10,21 @@ import cssImport from 'gulp-cssimport';
 import autoPrefixer from 'gulp-autoprefixer';
 import csso from 'gulp-csso';
 import rename from 'gulp-rename';
+import sourcemaps from 'gulp-sourcemaps';
 // import size from 'gulp-size';
 
 // Task
 export default () => {
    return gulp.src(path.css.src)
+   .pipe(sourcemaps.init())
    .pipe(concat('main.css'))
    .pipe(cssImport())
    .pipe(autoPrefixer())
-   // .pipe(size({title: 'main.css'}))
    .pipe(gulp.dest(path.css.dest))
+   // .pipe(size({title: 'main.css'}))
    .pipe(rename(app.rename))
    .pipe(csso())
    // .pipe(size({title: 'main.min.css'}))
+   .pipe(sourcemaps.write())
    .pipe(gulp.dest(path.css.dest))
 }
