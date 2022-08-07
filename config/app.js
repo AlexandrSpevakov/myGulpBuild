@@ -2,9 +2,9 @@ const isProd = process.argv.includes('--production');
 const isDev = !isProd
 
 // Config
-const path = require('./paths.js')
+import path from './path.js';
 
-module.exports = {
+export default {
    isProd: isProd,
    isDev: isDev,
 

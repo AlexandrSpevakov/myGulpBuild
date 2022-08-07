@@ -1,20 +1,18 @@
-const {src, dest} = require('gulp');
+import gulp from 'gulp';
 
 // Config
-const path = require('../config/paths')
-const app = require('../config/app')
+import path from '../config/path.js';
+import app from '../config/app.js';
 
 // Plugins
-// const size = require('gulp-size');
-const babel = require('gulp-babel');
-const webpack = require('webpack-stream');
+// import size from 'gulp-size';
+import babel from 'gulp-babel';
+import webpack from 'webpack-stream';
 
 // Task
-const js = () => {
-   return src(path.js.src)
+export default () => {
+   return gulp.src(path.js.src)
    .pipe(babel())
    .pipe(webpack(app.webpack))
-   .pipe(dest(path.js.dest))
+   .pipe(gulp.dest(path.js.dest))
 }
-
-module.exports = js;

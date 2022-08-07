@@ -1,29 +1,27 @@
-const {src, dest} = require('gulp');
+import gulp from 'gulp';
 
 // Config
-const path = require('../config/paths')
-const app = require('../config/app')
+import path from '../config/path.js';
+import app from '../config/app.js';
 
 // Plugins
-const concat = require('gulp-concat');
-const cssImport = require('gulp-cssimport');
-const autoPrefixer = require('gulp-autoprefixer');
-const csso = require('gulp-csso');
-const rename = require('gulp-rename');
-// const size = require('gulp-size');
+import concat from 'gulp-concat';
+import cssImport from 'gulp-cssimport';
+import autoPrefixer from 'gulp-autoprefixer';
+import csso from 'gulp-csso';
+import rename from 'gulp-rename';
+// import size from 'gulp-size';
 
 // Task
-const css = () => {
-   return src(path.css.src)
+export default () => {
+   return gulp.src(path.css.src)
    .pipe(concat('main.css'))
    .pipe(cssImport())
    .pipe(autoPrefixer())
    // .pipe(size({title: 'main.css'}))
-   .pipe(dest(path.css.dest))
+   .pipe(gulp.dest(path.css.dest))
    .pipe(rename(app.rename))
    .pipe(csso())
    // .pipe(size({title: 'main.min.css'}))
-   .pipe(dest(path.css.dest))
+   .pipe(gulp.dest(path.css.dest))
 }
-
-module.exports = css;

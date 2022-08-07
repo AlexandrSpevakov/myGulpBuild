@@ -1,17 +1,17 @@
-const {watch, series, parallel} = require('gulp');
-const browserSync = require('browser-sync').create();
+import gulp from 'gulp';
+import browserSync from 'browser-sync';
 
 // Config
-const path = require('./config/paths')
-const app = require('./config/app')
+import path from './config/path.js'
+import app from './config/app.js'
 
 // Imported Tasks
-const clear = require('./tasks/clear.js');
-const html = require('./tasks/html.js');
-// const css = require('./tasks/css.js');
-const scss = require('./tasks/scss.js');
-const js = require('./tasks/js.js');
-const img = require('./tasks/img.js');
+import clear from './tasks/clear.js';
+import html from './tasks/html.js';
+// import css from './tasks/css.js';
+import scss from './tasks/scss.js';
+import js from './tasks/js.js';
+import img from './tasks/img.js';
 
 // Server
 const server = () => {
@@ -20,29 +20,24 @@ const server = () => {
 
 // Watching
 const watcher = () => {
-   watch(path.html.watch, html).on('all', browserSync.reload);
-   watch(path.scss.watch, scss).on('all', browserSync.reload);
-   watch(path.js.watch, js).on('all', browserSync.reload);
-   watch(path.img.watch, img).on('all', browserSync.reload);
+   gulp.watch(path.html.watch, html).on('all', browserSync.reload);
+   gulp.watch(path.scss.watch, scss).on('all', browserSync.reload);
+   gulp.watch(path.js.watch, js).on('all', browserSync.reload);
+   gulp.watch(path.img.watch, img).on('all', browserSync.reload);
 }
 
 // Main Tasks
-const build = series(
+const build = gulp.series(
    clear,
-   parallel(html, scss, js, img)
+   gulp.parallel(html, scss, js, img)
 );
 
-const dev = series(
+const dev = gulp.series(
    build,
-   parallel(watcher, server)
+   gulp.parallel(watcher, server)
 );
 
-// Exports
-exports.html = html;
-exports.scss = scss;
-exports.js = js;
-exports.img = img;
-exports.watch = watcher;
-exports.clear = clear;
+// Public Tasks
+export {clear, html, scss, js, img};
 
-exports.default = app.isProd ? build : dev;
+export default app.isProd ? build : dev;

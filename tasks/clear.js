@@ -1,11 +1,9 @@
 // Plugin
-const del = require('del');
+import delAsync from 'del';
 
 // Config
-const path = require('../config/paths')
+import path from '../config/path.js';
 
-const clear = () => {
-   return del(path.root);
+export default () => {
+   return delAsync(path.root);
 }
-
-module.exports = clear;

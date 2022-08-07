@@ -1,19 +1,17 @@
-const {src, dest} = require('gulp');
+import gulp from 'gulp';
 
 // Config
-const path = require('../config/paths')
-const app = require('../config/app')
+import path from '../config/path.js';
+import app from '../config/app.js';
 
 // Plugins
-const imagemin = require('gulp-imagemin');
-const newer = require('gulp-newer');
+import imagemin from 'gulp-imagemin';
+import newer from 'gulp-newer';
 
 // Task
-const img = () => {
-   return src(path.img.src)
+export default () => {
+   return gulp.src(path.img.src)
    .pipe(newer(path.img.dest))
    .pipe(imagemin(app.imagemin))
-   .pipe(dest(path.img.dest))
+   .pipe(gulp.dest(path.img.dest))
 }
-
-module.exports = img;
