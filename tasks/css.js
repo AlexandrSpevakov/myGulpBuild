@@ -11,12 +11,13 @@ import autoPrefixer from 'gulp-autoprefixer';
 import csso from 'gulp-csso';
 import rename from 'gulp-rename';
 import sourcemaps from 'gulp-sourcemaps';
+import gulpIf from 'gulp-if';
 // import size from 'gulp-size';
 
 // Task
 export default () => {
    return gulp.src(path.css.src)
-   .pipe(sourcemaps.init())
+   .pipe(gulpIf(app.isDev, sourcemaps.init()))
    .pipe(concat('main.css'))
    .pipe(cssImport())
    .pipe(autoPrefixer())
@@ -25,6 +26,6 @@ export default () => {
    .pipe(rename(app.rename))
    .pipe(csso())
    // .pipe(size({title: 'main.min.css'}))
-   .pipe(sourcemaps.write())
+   .pipe(gulpIf(app.isDev, sourcemaps.write()))
    .pipe(gulp.dest(path.css.dest))
 }
