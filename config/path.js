@@ -30,7 +30,7 @@ export default {
 
    ts: {
       src: pathSrc + '/ts/*.ts',
-      watch: pathSrc + '/ts/*.ts',
+      watch: pathSrc + '/ts/**/*.ts',
       dest: pathDest + '/js'
    },
 
