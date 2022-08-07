@@ -10,10 +10,10 @@ import csso from 'gulp-csso';
 import rename from 'gulp-rename';
 import sourcemaps from 'gulp-sourcemaps';
 import gulpIf from 'gulp-if';
-// import size from 'gulp-size';
 import dartSass from 'sass';
 import gulpSass from 'gulp-sass';
 const sass = gulpSass(dartSass);
+// import size from 'gulp-size';
 
 // Task
 export default () => {
