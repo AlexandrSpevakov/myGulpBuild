@@ -17,7 +17,7 @@ export default () => {
    // .pipe(gulpIf(app.isProd, sourcemaps.init()))
    .pipe(fileInclude())
    // .pipe(size({title: 'before'}))
-   .pipe(gulpIf(app.isProd, htmlmin(app.htmlmin)))
+   .pipe(htmlmin(app.htmlmin))
    // .pipe(size({title: 'after'}))
    // .pipe(gulpIf(app.isProd, sourcemaps.write()))
    .pipe(gulp.dest(path.html.dest))
