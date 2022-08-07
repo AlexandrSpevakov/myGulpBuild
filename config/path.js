@@ -10,11 +10,11 @@ export default {
       dest: pathDest
    },
 
-   // css: {
-   //    src: pathSrc + '/css/*.css',
-   //    watch: pathSrc + '/css/**/*.css',
-   //    dest: pathDest + '/css'
-   // },
+   css: {
+      src: pathSrc + '/css/*.css',
+      watch: pathSrc + '/css/**/*.css',
+      dest: pathDest + '/css'
+   },
 
    scss: {
       src: pathSrc + '/scss/*.{scss,sass}',
@@ -22,11 +22,11 @@ export default {
       dest: pathDest + '/css'
    },
 
-   // js: {
-   //    src: pathSrc + '/js/*.js',
-   //    watch: pathSrc + '/js/**/*.js',
-   //    dest: pathDest + '/js'
-   // },
+   js: {
+      src: pathSrc + '/js/*.js',
+      watch: pathSrc + '/js/**/*.js',
+      dest: pathDest + '/js'
+   },
 
    ts: {
       src: pathSrc + '/ts/*.ts',
