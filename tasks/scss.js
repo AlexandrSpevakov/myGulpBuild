@@ -26,6 +26,6 @@ export default () => {
    .pipe(rename(app.rename))
    .pipe(csso())
    // .pipe(size({title: 'main.min.css'}))
-   .pipe(gulpIf(app.isDev, sourcemaps.write()))
+   .pipe(gulpIf(app.isDev, sourcemaps.write('.')))
    .pipe(gulp.dest(path.scss.dest))
 }
