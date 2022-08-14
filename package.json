@@ -16,10 +16,6 @@
          "@babel/preset-env"
       ]
    },
-   "repository": {
-      "type": "git",
-      "url": "/Users/oleksandr/Coding/myGulpBuild/.git/"
-   },
    "author": "Oleksandr",
    "license": "ISC",
    "devDependencies": {
