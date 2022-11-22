@@ -21,10 +21,10 @@ export default () => {
     .pipe(ts())
     .pipe(babel())
     .pipe(gulp.dest(path.ts.dest))
-    .pipe(size({ title: "main.min.js" }))
+    .pipe(size({ title: "main.ts" }))
     .pipe(rename(app.rename))
     .pipe(uglify())
-    .pipe(size({ title: "main.js" }))
+    .pipe(size({ title: "main.min.js" }))
     .pipe(gulpIf(app.isDev, sourcemaps.write(".")))
     .pipe(gulp.dest(path.ts.dest));
 };
