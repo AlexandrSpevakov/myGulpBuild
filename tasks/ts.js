@@ -13,12 +13,14 @@ import sourcemaps from "gulp-sourcemaps";
 import gulpIf from "gulp-if";
 import size from "gulp-size";
 
+const tsProject = ts.createProject("tsconfig.json");
+
 // Task
 export default () => {
   return gulp
     .src(path.ts.src)
     .pipe(gulpIf(app.isDev, sourcemaps.init()))
-    .pipe(ts())
+    .pipe(tsProject())
     .pipe(babel())
     .pipe(gulp.dest(path.ts.dest))
     .pipe(size({ title: "main.ts" }))
